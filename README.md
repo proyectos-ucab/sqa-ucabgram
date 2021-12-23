@@ -12,7 +12,7 @@ yarn install o npm install
 yarn start
 ```
 
-# Brances
+# Branches
 * `master`
 * `develop` - branch de desarrollo
 * `sprint-1` - master branch para el desarrollo del primer sprint
