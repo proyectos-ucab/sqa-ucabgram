@@ -19,6 +19,8 @@ yarn build #Construye el proyecto para el despliegue
 * `sprint-1` - master branch para el desarrollo del primer sprint
 * `sprint-2` - master branch para el desarrollo del segundo sprint
 
+Nota: No subir el codigo directamente a una de estas ramas crear primero una pull request
+
 # Firebase email credenciales
 
 ```
