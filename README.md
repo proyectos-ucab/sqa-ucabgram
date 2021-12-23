@@ -9,7 +9,8 @@ yarn install o npm install
 # Comandos
 
 ```
-yarn start
+yarn start #Inicia el servidor en el puerto 3000
+yarn build #Construye el proyecto para el despliegue
 ```
 
 # Branches
