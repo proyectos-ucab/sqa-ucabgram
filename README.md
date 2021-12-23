@@ -13,10 +13,10 @@ yarn start
 ```
 
 # Brances
-* master
-* develop -> branch de desarrollo
-* sprint-1 -> master branch para el desarrollo del primer sprint
-* sprint-2 -> master branch para el desarrollo del segundo sprint
+* `master`
+* `develop` - branch de desarrollo
+* `sprint-1` - master branch para el desarrollo del primer sprint
+* `sprint-2` - master branch para el desarrollo del segundo sprint
 
 # Firebase email credenciales
 
