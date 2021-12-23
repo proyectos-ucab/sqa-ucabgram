@@ -1,15 +1,29 @@
 # Getting Started with Create React App
 
 ```
-git clone
-cd repo
-yarn install
+git clone https://github.com/proyectos-ucab/sqa-ucabgram.git
+cd sqa-ucabgram
+yarn install o npm install
 ```
+
+# Comandos
+
+```
+yarn start
+```
+
+# Brances
+* master
+* develop -> branch de desarrollo
+* sprint-1 -> master branch para el desarrollo del primer sprint
+* sprint-2 -> master branch para el desarrollo del segundo sprint
 
 # Firebase email credenciales
 
-grupo4sqa@gmail.com
+```
+email: grupo4sqa@gmail.com
 pw: grupo4sqa.ucab
+```
 
 # Course Contents
 
