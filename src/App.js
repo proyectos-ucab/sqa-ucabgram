@@ -13,6 +13,7 @@ import { useAuthListener } from './hooks';
 const Login = lazy(() => import('./pages/login'));
 const Signup = lazy(() => import('./pages/signup'));
 const NotFound = lazy(() => import('./pages/not-found'));
+const Profile = lazy(() => import('./pages/profile'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 
 function RequireAuth({ user }) {
@@ -32,12 +33,20 @@ export default function App() {
     <UserContext.Provider value={{ user }}>
       <BrowserRouter>
         <Routes>
+          <Route
+            path={ROUTES.PROFILE}
+            element={
+              <React.Suspense fallback={<p>Loading...</p>}>
+                <Profile />
+              </React.Suspense>
+            }
+          ></Route>
           <Route element={<RequireAuth user={user} />}>
             <Route
               path={ROUTES.DASHBOARD}
               element={
                 <React.Suspense fallback={<p>Loading...</p>}>
-                  <Dashboard />
+                  <Dashboard user={user} />
                 </React.Suspense>
               }
             />

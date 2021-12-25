@@ -57,37 +57,37 @@ pw: grupo4sqa.ucab
 - [x] (3:42:21) Working on Dashboard Page
 - [x] (3:45:59) Working on Sidebar Component
 - [x] (3:46:15) use-user.js hook
-- [ ] (4:04:20) In user.js ⇒ Introduction to prop types
-- [ ] (4:25:03) Created Timeline.js
-- [ ] (4:25:43) Explanation on useMemo
-- [ ] (4:27:45) Add WhyDidYouRender
-- [ ] (4:29:53) Struggling with some issues
-- [ ] (4:42:42) Finally Figuring out some problems with WhyDidYouRender
-- [ ] (4:50:41) Working on suggestion.js (sidebar completed)
-- [ ] (4:59:20) Get suggested profiles
-- [ ] (5:16:28) Functionality: Remove followed user from suggestion
-- [ ] (5:23:12) Functionality: Update user’s following & followers
-- [ ] (5:34:18) Overview on Timeline
-- [ ] (5:40:47) Creating Post Component
-- [ ] (5:42:57) Creating more custom hooks (usePhotos)
-- [ ] (6:04:16) Rendering out the photos (using React skeleton)
-- [ ] (6:10:55) Start work on Post Component
-- [ ] (6:15:18) Components within Post
-- [ ] (6:16:03) Header Component
-- [ ] (6:20:56) Image & Actions
-- [ ] (6:27:32) Service call in Firebase
-- [ ] (6:42:44) Show Comments
-- [ ] (6:51:13) Add Comments
-- [ ] (7:12:26) Adding Protected Routes
-- [ ] (7:27:13) Profile
-- [ ] (7:30:20) Lazy load explanation
-- [ ] (7:45:23) Continue working on Profile Page
-- [ ] (7:58:48) Header Component in Profile Page
-- [ ] (8:02:14) Profile Specific Header
-- [ ] (8:18:00) Get User Photos
-- [ ] (8:37:52) Continue working on header
-- [ ] (9:20:31) Information in header
-- [ ] (9:37:09) Photos Component in Profile Page
+- [x] (4:04:20) In user.js ⇒ Introduction to prop types
+- [x] (4:25:03) Created Timeline.js
+- [x] (4:25:43) Explanation on useMemo
+- [x] (4:27:45) Add WhyDidYouRender
+- [x] (4:29:53) Struggling with some issues
+- [x] (4:42:42) Finally Figuring out some problems with WhyDidYouRender
+- [x] (4:50:41) Working on suggestion.js (sidebar completed)
+- [x] (4:59:20) Get suggested profiles
+- [x] (5:16:28) Functionality: Remove followed user from suggestion
+- [x] (5:23:12) Functionality: Update user’s following & followers
+- [x] (5:34:18) Overview on Timeline
+- [x] (5:40:47) Creating Post Component
+- [x] (5:42:57) Creating more custom hooks (usePhotos)
+- [x] (6:04:16) Rendering out the photos (using React skeleton)
+- [x] (6:10:55) Start work on Post Component
+- [x] (6:15:18) Components within Post
+- [x] (6:16:03) Header Component
+- [x] (6:20:56) Image & Actions
+- [x] (6:27:32) Service call in Firebase
+- [x] (6:42:44) Show Comments
+- [x] (6:51:13) Add Comments
+- [x] (7:12:26) Adding Protected Routes
+- [x] (7:27:13) Profile
+- [x] (7:30:20) Lazy load explanation
+- [x] (7:45:23) Continue working on Profile Page
+- [x] (7:58:48) Header Component in Profile Page
+- [x] (8:02:14) Profile Specific Header
+- [x] (8:18:00) Get User Photos
+- [x] (8:37:52) Continue working on header
+- [x] (9:20:31) Information in header
+- [x] (9:37:09) Photos Component in Profile Page
 - [ ] (9:50:07) Recap of everything we’ve done
 - [ ] (9:52:55) Start of Review
 - [ ] (9:55:33) Not found header
@@ -110,15 +110,15 @@ pw: grupo4sqa.ucab
 ## Sprint 1
 
 - [x] Historia de Usuario 1: Crear perfil 4
-- [ ] Historia de Usuario 2: Consultar perfil 5
-- [ ] Historia de Usuario 3: Entrar al sistema 6
+- [x] Historia de Usuario 2: Consultar perfil 5
+- [x] Historia de Usuario 3: Entrar al sistema 6
 - [ ] Historia de Usuario 4: Subir foto 7
-- [ ] Historia de Usuario 5: Consultar foto 8
+- [x] Historia de Usuario 5: Consultar foto 8
 - [ ] Historia de Usuario 6: Descargar foto 9
-- [ ] Historia de Usuario 7: Agregar like 10
+- [x] Historia de Usuario 7: Agregar like 10
 - [ ] Historia de Usuario 8: Consultar like 11
-- [ ] Historia de Usuario 9: Agregar comentario 12
-- [ ] Historia de Usuario 10: Consultar comentario 13
+- [x] Historia de Usuario 9: Agregar comentario 12
+- [x] Historia de Usuario 10: Consultar comentario 13
 - [ ] Historia de Usuario 11: Estadísticas de usuario
 
 ## Sprint 2
