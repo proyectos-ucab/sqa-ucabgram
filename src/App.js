@@ -8,7 +8,7 @@ import {
   Outlet,
 } from 'react-router-dom';
 import * as ROUTES from './contants/routes';
-import { UserContext } from './context';
+import { ModalProvider, UserContext } from './context';
 import { useAuthListener } from './hooks';
 const Login = lazy(() => import('./pages/login'));
 const Signup = lazy(() => import('./pages/signup'));
@@ -31,53 +31,63 @@ export default function App() {
 
   return (
     <UserContext.Provider value={{ user }}>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path={ROUTES.PROFILE}
-            element={
-              <React.Suspense fallback={<p>Loading...</p>}>
-                <Profile />
-              </React.Suspense>
-            }
-          ></Route>
-          <Route element={<RequireAuth user={user} />}>
+      <ModalProvider>
+        <BrowserRouter>
+          <Routes>
             <Route
-              path={ROUTES.DASHBOARD}
+              path={ROUTES.PROFILE}
               element={
                 <React.Suspense fallback={<p>Loading...</p>}>
-                  <Dashboard user={user} />
+                  <Profile />
+                </React.Suspense>
+              }
+            ></Route>
+            <Route element={<RequireAuth user={user} />}>
+              <Route
+                path={ROUTES.DASHBOARD}
+                element={
+                  <React.Suspense fallback={<p>Loading...</p>}>
+                    <Dashboard user={user} />
+                  </React.Suspense>
+                }
+              />
+            </Route>
+
+            <Route
+              path={ROUTES.LOGIN}
+              element={
+                <React.Suspense fallback={<p>Loading...</p>}>
+                  {user != null ? (
+                    <Navigate to={ROUTES.DASHBOARD} />
+                  ) : (
+                    <Login />
+                  )}
                 </React.Suspense>
               }
             />
-          </Route>
-
-          <Route
-            path={ROUTES.LOGIN}
-            element={
-              <React.Suspense fallback={<p>Loading...</p>}>
-                {user != null ? <Navigate to={ROUTES.DASHBOARD} /> : <Login />}
-              </React.Suspense>
-            }
-          />
-          <Route
-            path={ROUTES.SIGN_UP}
-            element={
-              <React.Suspense fallback={<p>Loading...</p>}>
-                {user != null ? <Navigate to={ROUTES.DASHBOARD} /> : <Signup />}
-              </React.Suspense>
-            }
-          />
-          <Route
-            path={'*'}
-            element={
-              <React.Suspense fallback={<p>Loading...</p>}>
-                <NotFound />
-              </React.Suspense>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+            <Route
+              path={ROUTES.SIGN_UP}
+              element={
+                <React.Suspense fallback={<p>Loading...</p>}>
+                  {user != null ? (
+                    <Navigate to={ROUTES.DASHBOARD} />
+                  ) : (
+                    <Signup />
+                  )}
+                </React.Suspense>
+              }
+            />
+            <Route
+              path={'*'}
+              element={
+                <React.Suspense fallback={<p>Loading...</p>}>
+                  <NotFound />
+                </React.Suspense>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </ModalProvider>
     </UserContext.Provider>
   );
 }

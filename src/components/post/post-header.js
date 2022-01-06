@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { DEFAULT_AVATAR_PATH } from '../../contants';
 
 export function PostHeader({ username }) {
   return (
@@ -10,6 +11,9 @@ export function PostHeader({ username }) {
             className="rounded-full h-8 w-8 flex mr-3"
             src={`/images/avatars/${username}.jpg`}
             alt={`${username} profile picture`}
+            onError={(e) => {
+              e.target.src = DEFAULT_AVATAR_PATH;
+            }}
           />
           <p className="font-bold">{username}</p>
         </Link>

@@ -1,6 +1,7 @@
 import { firebase, FieldValue } from '../lib';
 
 import * as COLLECTIONS from '../contants/collections';
+import { guidGenerator } from '../helpers';
 
 export async function doesUsernameExist(username) {
   const result = await firebase
@@ -180,4 +181,18 @@ export async function toggleFollow(
     followingUserId,
     isFollowingProfile
   );
+}
+
+export async function createUserPost(userId, fileUrl, caption) {
+  const result = await firebase.firestore().collection('photos').add({
+    userId,
+    caption: caption,
+    imageSrc: fileUrl,
+    photoId: guidGenerator(),
+    dateCreated: Date.now(),
+    comments: [],
+    likes: [],
+  });
+
+  return result;
 }

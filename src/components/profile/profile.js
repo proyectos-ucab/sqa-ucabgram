@@ -33,7 +33,7 @@ export function Profile({ user }) {
   return (
     <>
       <ProfileHeader
-        photosCount={photosCollection ? photosCollection.length : 0}
+        photosCount={photosCollection != null ? photosCollection.length : 0}
         profile={profile}
         followerCount={followerCount}
         setFollowerCount={dispatch}

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 
 export function Photos({ photos }) {
+  console.log('Photos', photos);
+
   return (
     <div className="h-16 border-t border-gray-primary mt-12 pt-4">
       <div className="grid grid-cols-3 gap-8 mt-4 mb-12">
@@ -10,10 +12,14 @@ export function Photos({ photos }) {
           ? new Array(12)
               .fill(0)
               .map((_, i) => <Skeleton key={i} width={320} height={400} />)
-          : photos.length > 0
+          : photos != null && photos.length > 0
           ? photos.map((photo) => (
               <div key={photo.docId} className="relative group">
-                <img src={photo.imageSrc} alt={photo.caption} />
+                <img
+                  className="w-full"
+                  src={photo.imageSrc}
+                  alt={photo.caption}
+                />
 
                 <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
                   <p className="flex items-center text-white font-bold">
@@ -29,7 +35,7 @@ export function Photos({ photos }) {
                         clipRule="evenodd"
                       />
                     </svg>
-                    {photo.likes.length}
+                    {photo.likes != null ? photo.likes.length : 0}
                   </p>
 
                   <p className="flex items-center text-white font-bold">
@@ -45,7 +51,7 @@ export function Photos({ photos }) {
                         clipRule="evenodd"
                       />
                     </svg>
-                    {photo.comments.length}
+                    {photo.comments != null ? photo.comments.length : 0}
                   </p>
                 </div>
               </div>

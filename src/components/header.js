@@ -1,21 +1,23 @@
 import { useContext } from 'react';
-import { FirebaseContext, UserContext } from '../context';
+import { FirebaseContext, ModalContext, UserContext } from '../context';
 import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from '../contants/routes';
 import { DEFAULT_AVATAR_PATH } from '../contants';
 
 import { useUser } from '../hooks';
+import { Uploader } from '../components';
 
 export function Header() {
   const { firebase } = useContext(FirebaseContext);
   const { user: loggedInUser } = useContext(UserContext);
+  const { handleModal } = useContext(ModalContext);
 
   const { user } = useUser(loggedInUser?.uid);
   const navigate = useNavigate();
 
   return (
     <header className="h-16 bg-white border-b border-gray-primary mb-8">
-      <div className="container mx-auto max-w-screen-lg h-full">
+      <div className="container mx-auto max-w-screen-md h-full">
         <div className="flex justify-between h-full">
           <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
             <h1 className="flex justify-center w-full">
@@ -33,7 +35,7 @@ export function Header() {
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                   <svg
-                    className="w-8 mr-6 text-black-light cursor-pointer"
+                    className="w-6 mr-6 text-black-light cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -47,6 +49,28 @@ export function Header() {
                     />
                   </svg>
                 </Link>
+                <button
+                  type="button"
+                  title="Add post"
+                  onClick={() => {
+                    handleModal(<Uploader user={user} />);
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 mr-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
 
                 <button
                   type="button"
@@ -63,7 +87,7 @@ export function Header() {
                   }}
                 >
                   <svg
-                    className="w-8 mr-6 text-black-light cursor-pointer"
+                    className="w-6 mr-6 text-black-light cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"

@@ -6,10 +6,17 @@ cd repo
 yarn install
 ```
 
-# Firebase email credenciales
+# Firebase y gmail credenciales
 
 grupo4sqa@gmail.com
 pw: grupo4sqa.ucab
+
+# Cloudinary
+
+email: grupo4sqa@gmail.com
+pw: Grupo4sqa.ucab
+Assigned Cloud Name: grupo4sqa-gmail-com
+Cloudinary upload preset name: duoiifbj
 
 # Course Contents
 
@@ -114,12 +121,12 @@ pw: grupo4sqa.ucab
 - [x] Historia de Usuario 3: Entrar al sistema 6
 - [ ] Historia de Usuario 4: Subir foto 7
 - [x] Historia de Usuario 5: Consultar foto 8
-- [ ] Historia de Usuario 6: Descargar foto 9
+- [x] Historia de Usuario 6: Descargar foto 9
 - [x] Historia de Usuario 7: Agregar like 10
-- [ ] Historia de Usuario 8: Consultar like 11
+- [x] Historia de Usuario 8: Consultar like 11
 - [x] Historia de Usuario 9: Agregar comentario 12
 - [x] Historia de Usuario 10: Consultar comentario 13
-- [ ] Historia de Usuario 11: Estadísticas de usuario
+- [x] Historia de Usuario 11: Estadísticas de usuario
 
 ## Sprint 2
 

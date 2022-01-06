@@ -61,6 +61,7 @@ export function ProfileHeader({
             alt={`${fullName} profile picture`}
             src={`/images/avatars/${profileUsername}.jpg`}
             onError={(e) => {
+              console.log('Should call this');
               e.target.src = DEFAULT_AVATAR_PATH;
             }}
           />

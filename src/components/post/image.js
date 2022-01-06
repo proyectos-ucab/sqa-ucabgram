@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export function Image({ src, caption }) {
-  return <img src={src} alt={caption} />;
+  return <img className="w-full" src={src} alt={caption} />;
 }
 
 Image.propTypes = {
