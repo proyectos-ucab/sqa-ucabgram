@@ -505,6 +505,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mb-6 {
   margin-bottom: 1.5rem;
 }
+.mr-0 {
+  margin-right: 0px;
+}
 .flex {
   display: flex;
 }

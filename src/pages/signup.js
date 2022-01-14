@@ -1,23 +1,23 @@
-import { useState, useContext, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState, useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-import * as ROUTES from '../contants/routes';
-import * as COLLECTIONS from '../contants/collections';
+import * as ROUTES from "../contants/routes";
+import * as COLLECTIONS from "../contants/collections";
 
-import { FirebaseContext } from '../context';
-import { doesUsernameExist } from '../services';
+import { FirebaseContext } from "../context";
+import { doesUsernameExist } from "../services";
 
 export default function () {
   const { firebase } = useContext(FirebaseContext);
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const isInvalid = password === '' || email === '';
+  const isInvalid = password === "" || email === "";
 
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -48,7 +48,7 @@ export default function () {
         setError(error.message);
       }
     } else {
-      setError('Username already taken');
+      setError("Username already taken");
     }
   };
 
@@ -57,6 +57,11 @@ export default function () {
   return (
     <div className="container flex mx-auto max-w-screen-sm items-center justify-center h-screen">
       <div className="flex flex-col">
+        <h1 className="flex justify-center w-full">
+          <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
+            <img src="/images/logo.png" alt="Instagram" className="mb-4" />
+          </Link>
+        </h1>
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           {error && (
             <span className="mb-4 text-xs text-red-primary">{error}</span>
@@ -99,7 +104,7 @@ export default function () {
               disabled={isInvalid}
               type="submit"
               className={`bg-blue-medium text-white w-full rounded h-8 font-bold
-          ${isInvalid && 'opacity-50'}`}
+          ${isInvalid && "opacity-50"}`}
             >
               Sign up
             </button>

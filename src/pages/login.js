@@ -1,19 +1,19 @@
-import { useState, useContext, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState, useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-import * as ROUTES from '../contants/routes';
+import * as ROUTES from "../contants/routes";
 
-import { FirebaseContext } from '../context';
+import { FirebaseContext } from "../context";
 
 export default function () {
   const { firebase } = useContext(FirebaseContext);
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const isInvalid = password === '' || email === '';
+  const isInvalid = password === "" || email === "";
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -22,8 +22,8 @@ export default function () {
       await firebase.auth().signInWithEmailAndPassword(email, password);
       navigate(ROUTES.DASHBOARD);
     } catch (error) {
-      setEmail('');
-      setPassword('');
+      setEmail("");
+      setPassword("");
       setError(error.message);
     }
   };
@@ -33,6 +33,11 @@ export default function () {
   return (
     <div className="container flex mx-auto max-w-screen-sm items-center justify-center h-screen">
       <div className="flex flex-col">
+        <h1 className="flex justify-center w-full">
+          <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
+            <img src="/images/logo.png" alt="Instagram" className="mb-4" />
+          </Link>
+        </h1>
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
 
@@ -57,7 +62,7 @@ export default function () {
               disabled={isInvalid}
               type="submit"
               className={`bg-blue-medium text-white w-full rounded h-8 font-bold
-          ${isInvalid && 'opacity-50'}`}
+          ${isInvalid && "opacity-50"}`}
             >
               Login
             </button>
