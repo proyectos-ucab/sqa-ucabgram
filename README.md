@@ -137,7 +137,7 @@ Cloudinary upload preset name: duoiifbj
 - [x] Historia de Usuario 1: Crear perfil 4
 - [x] Historia de Usuario 2: Consultar perfil 5
 - [x] Historia de Usuario 3: Entrar al sistema 6
-- [ ] Historia de Usuario 4: Subir foto 7
+- [x] Historia de Usuario 4: Subir foto 7
 - [x] Historia de Usuario 5: Consultar foto 8
 - [x] Historia de Usuario 6: Descargar foto 9
 - [x] Historia de Usuario 7: Agregar like 10
