@@ -17,32 +17,34 @@ export function Timeline() {
   const { photos } = usePhotos(user);
 
   useEffect(() => {
-    async function fetchTimeline() {
-      if (selectedTab === "todos") {
-        setDisplayedPhotos(photos);
-      } else if (selectedTab === "tendencia") {
-        const auxPhotosArray = new Array(...photos);
+    // async function fetchTimeline() {
+    //   if (selectedTab === "todos") {
+    //     setDisplayedPhotos(photos);
+    //   } else if (selectedTab === "tendencia") {
+    //     const auxPhotosArray = new Array(...photos);
 
-        const sortedTendencyPhotos = new Array(
-          ...auxPhotosArray.sort((a, b) => {
-            return b.likes.length - a.likes.length;
-          })
-        );
+    //     const sortedTendencyPhotos = new Array(
+    //       ...auxPhotosArray.sort((a, b) => {
+    //         return b.likes.length - a.likes.length;
+    //       })
+    //     );
 
-        setDisplayedPhotos(sortedTendencyPhotos);
-      } else if (selectedTab === "global") {
-        const allPhotos = await getAllPosts(user.userId);
-        const sortedGlobalPhotos = new Array(
-          ...allPhotos.sort((a, b) => {
-            return b.likes.length - a.likes.length;
-          })
-        );
-        setDisplayedPhotos(sortedGlobalPhotos);
-      }
-    }
-    if (photos != null) {
-      fetchTimeline();
-    }
+    //     setDisplayedPhotos(sortedTendencyPhotos);
+    //   } else if (selectedTab === "global") {
+    //     const allPhotos = await getAllPosts(user.userId);
+    //     const sortedGlobalPhotos = new Array(
+    //       ...allPhotos.sort((a, b) => {
+    //         return b.likes.length - a.likes.length;
+    //       })
+    //     );
+    //     setDisplayedPhotos(sortedGlobalPhotos);
+    //   }
+    // }
+    // if (photos != null) {
+    //   fetchTimeline();
+    // }
+
+    setDisplayedPhotos(photos);
   }, [selectedTab, photos]);
 
   return (
