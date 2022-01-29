@@ -40,8 +40,9 @@ export function Timeline() {
         setDisplayedPhotos(sortedGlobalPhotos);
       }
     }
-
-    fetchTimeline();
+    if (photos != null) {
+      fetchTimeline();
+    }
   }, [selectedTab, photos]);
 
   return (
