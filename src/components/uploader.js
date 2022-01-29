@@ -1,15 +1,16 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
-import { createUserPost, uploadImage } from '../services';
-import { ModalContext } from '../context';
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { createUserPost, uploadImage } from "../services";
+import { ModalContext } from "../context";
 
 export function Uploader({ user }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [progress, setProgress] = useState(0);
-  const [caption, setCaption] = useState('');
+  const [caption, setCaption] = useState("");
+  const [mediaType, setMediaType] = useState("");
   const { handleModal } = useContext(ModalContext);
 
-  const isInvalid = caption === '';
+  const isInvalid = caption === "";
   const hiddenFileInput = useRef(null);
 
   // Effect for detecting when images has been uploaded and update ui to add comments
@@ -27,6 +28,13 @@ export function Uploader({ user }) {
 
   const handleChange = (event) => {
     const fileUploaded = event.target.files[0];
+
+    if (fileUploaded.type.includes("mp4")) {
+      setMediaType("video");
+    } else {
+      setMediaType("image");
+    }
+
     if (fileUploaded != null) {
       setSelectedImage(fileUploaded);
     }
@@ -39,15 +47,21 @@ export function Uploader({ user }) {
   const handleBackButtonClick = () => {
     setUploadedImage(null);
     setSelectedImage(null);
-    setCaption('');
+    setCaption("");
     setProgress(0);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await createUserPost(user.userId, uploadedImage, caption);
+    const result = await createUserPost(
+      user.userId,
+      uploadedImage,
+      caption,
+      mediaType
+    );
     if (result != null) {
       handleModal();
+      location.reload();
     }
   };
 
@@ -98,25 +112,37 @@ export function Uploader({ user }) {
             <button
               disabled={progress !== 0}
               className={`w-full bg-blue-medium text-white px-4 rounded h-8 font-bold ${
-                progress !== 0 && 'opacity-50'
+                progress !== 0 && "opacity-50"
               }`}
               onClick={handleFileBrowserButtonClick}
             >
               {progress !== 0
                 ? `${progress} %`
-                : 'Seleccionar de la computadora'}
+                : "Seleccionar de la computadora"}
             </button>
             <input
               type="file"
-              accept="image/png, image/jpeg"
+              accept="image/png, image/jpeg video/mp4"
               ref={hiddenFileInput}
               onChange={handleChange}
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
             ></input>
           </div>
         ) : (
           <div className="h-full flex flex-col py-5 items-center ">
-            <img src={uploadedImage}></img>
+            <div style={{ maxWidth: "80%", maxHeight: "50%" }}>
+              {mediaType === "video" && (
+                <video
+                  src={uploadedImage}
+                  controls
+                  className="w-full h-full"
+                ></video>
+              )}
+              {mediaType === "image" && (
+                <img src={uploadedImage} className="w-full h-full"></img>
+              )}
+            </div>
+
             <form className="w-full h-full mt-5" onSubmit={handleSubmit}>
               <textarea
                 aria-label="Introduce una descripcion"
@@ -131,7 +157,7 @@ export function Uploader({ user }) {
                 disabled={isInvalid}
                 type="submit"
                 className={`bg-blue-medium text-white w-full rounded h-8 font-bold
-          ${isInvalid && 'opacity-50'}`}
+          ${isInvalid && "opacity-50"}`}
               >
                 Publicar
               </button>

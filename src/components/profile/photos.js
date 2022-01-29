@@ -1,9 +1,33 @@
 /* eslint-disable no-nested-ternary */
-import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
+import { useContext } from "react";
+import { UserContext } from "../../context";
+import { useUser } from "../../hooks";
+import PropTypes from "prop-types";
+import Skeleton from "react-loading-skeleton";
+import { deletePostByDocId } from "../../services";
 
-export function Photos({ photos }) {
-  console.log('Photos', photos);
+export function Photos({
+  photos,
+  profile: {
+    docId: profileDocId,
+    userId: profileUserId,
+    fullName,
+    followers,
+    following,
+    username: profileUsername,
+    description,
+  },
+}) {
+  const { user: loggedInUser } = useContext(UserContext);
+  const { user } = useUser(loggedInUser?.uid);
+  const ownUser = user?.username && user?.username === profileUsername;
+
+  const isAdmin = user != null && user.admin === true;
+
+  async function handleDeletePost(photoDocId) {
+    await deletePostByDocId(photoDocId);
+    location.reload();
+  }
 
   return (
     <div className="h-16 border-t border-gray-primary mt-12 pt-4">
@@ -15,11 +39,21 @@ export function Photos({ photos }) {
           : photos != null && photos.length > 0
           ? photos.map((photo) => (
               <div key={photo.docId} className="relative group">
-                <img
-                  className="w-full"
-                  src={photo.imageSrc}
-                  alt={photo.caption}
-                />
+                {photo.mediaType === "video" && (
+                  <video
+                    className="w-full"
+                    src={photo.imageSrc}
+                    controls
+                    alt={photo.caption}
+                  ></video>
+                )}
+                {photo.mediaType == null || photo.mediaType === "image" ? (
+                  <img
+                    className="w-full h-full object-cover"
+                    src={photo.imageSrc}
+                    alt={photo.caption}
+                  />
+                ) : null}
 
                 <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
                   <p className="flex items-center text-white font-bold">
@@ -53,6 +87,30 @@ export function Photos({ photos }) {
                     </svg>
                     {photo.comments != null ? photo.comments.length : 0}
                   </p>
+
+                  {ownUser || isAdmin ? (
+                    <p
+                      className="flex items-center text-white font-bold cursor-pointer"
+                      onClick={() => {
+                        handleDeletePost(photo.docId);
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                        />
+                      </svg>
+                    </p>
+                  ) : null}
                 </div>
               </div>
             ))

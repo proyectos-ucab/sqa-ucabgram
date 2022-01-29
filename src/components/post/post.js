@@ -1,7 +1,7 @@
-import { useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useRef } from "react";
+import PropTypes from "prop-types";
 
-import { PostHeader, Image, Actions, Footer, Comments } from '../post';
+import { PostHeader, Image, Actions, Footer, Comments, Video } from "../post";
 
 export function Post({ content }) {
   const commentInput = useRef(null);
@@ -10,7 +10,12 @@ export function Post({ content }) {
   return (
     <div className="rounded col-span-4 border bg-white border-gray-primary mb-12">
       <PostHeader username={content.username} />
-      <Image src={content.imageSrc} caption={content.caption} />
+      {content.mediaType === "video" && (
+        <Video src={content.imageSrc} caption={content.caption} />
+      )}
+      {content.mediaType == null || content.mediaType === "image" ? (
+        <Image src={content.imageSrc} caption={content.caption} />
+      ) : null}
       <Actions
         docId={content.docId}
         totalLikes={content.likes.length}
@@ -20,9 +25,11 @@ export function Post({ content }) {
       <Footer caption={content.caption} username={content.username} />
       <Comments
         docId={content.docId}
+        photoId={content.photoId}
         comments={content.comments}
         posted={content.dateCreated}
         commentInput={commentInput}
+        userId={content.userId}
       />
     </div>
   );

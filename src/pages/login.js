@@ -1,9 +1,11 @@
+import { Result } from "postcss";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import * as ROUTES from "../contants/routes";
 
 import { FirebaseContext } from "../context";
+import { getUserByUserId } from "../services";
 
 export default function () {
   const { firebase } = useContext(FirebaseContext);
@@ -19,16 +21,23 @@ export default function () {
     event.preventDefault();
 
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-      navigate(ROUTES.DASHBOARD);
+      const result = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+
+      const user = await getUserByUserId(result.user.uid);
+
+      if (user != null && user.state !== "active") {
+        throw new Error("Tu cuenta se encuentra desactivada");
+      } else {
+        navigate(ROUTES.DASHBOARD);
+      }
     } catch (error) {
       setEmail("");
       setPassword("");
       setError(error.message);
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="container flex mx-auto max-w-screen-sm items-center justify-center h-screen">

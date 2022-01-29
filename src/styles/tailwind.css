@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.comment {
+  display: flex;
+}
+
+.comment__delete-icon {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  margin-left: auto;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.comment:hover .comment__delete-icon {
+  opacity: 1;
+  visibility: visible;
+  position: static;
+  pointer-events: all;
+}

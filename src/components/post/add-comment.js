@@ -1,26 +1,30 @@
-import { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
-import { UserContext, FirebaseContext } from '../../context';
+import { useState, useContext } from "react";
+import PropTypes from "prop-types";
+import { UserContext, FirebaseContext } from "../../context";
+import { guidGenerator } from "../../helpers";
 
 export function AddComment({ docId, comments, setComments, commentInput }) {
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const { firebase, FieldValue } = useContext(FirebaseContext);
-  const {
-    user: { displayName },
-  } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleSubmitComment = (event) => {
     event.preventDefault();
 
-    setComments([...comments, { displayName, comment }]);
-    setComment('');
+    setComments([...comments, { displayName: user.displayName, comment }]);
+    setComment("");
 
     return firebase
       .firestore()
-      .collection('photos')
+      .collection("photos")
       .doc(docId)
       .update({
-        comments: FieldValue.arrayUnion({ displayName, comment }),
+        comments: FieldValue.arrayUnion({
+          userId: user.uid,
+          commentId: guidGenerator(),
+          displayName: user.displayName,
+          comment,
+        }),
       });
   };
 
@@ -48,7 +52,7 @@ export function AddComment({ docId, comments, setComments, commentInput }) {
         />
         <button
           className={`text-sm font-bold text-blue-medium ${
-            !comment && 'opacity-25'
+            !comment && "opacity-25"
           }`}
           type="button"
           disabled={comment.length < 1}

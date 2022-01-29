@@ -41,6 +41,7 @@ export default function () {
           emailAddress: email.toLowerCase(),
           following: [],
           dateCreated: Date.now(),
+          status: "active",
         });
 
         navigate(ROUTES.DASHBOARD);

@@ -1,4 +1,4 @@
-import React, { lazy, useContext } from 'react';
+import React, { lazy, useContext } from "react";
 import {
   Routes,
   Route,
@@ -6,15 +6,15 @@ import {
   useLocation,
   Navigate,
   Outlet,
-} from 'react-router-dom';
-import * as ROUTES from './contants/routes';
-import { ModalProvider, UserContext } from './context';
-import { useAuthListener } from './hooks';
-const Login = lazy(() => import('./pages/login'));
-const Signup = lazy(() => import('./pages/signup'));
-const NotFound = lazy(() => import('./pages/not-found'));
-const Profile = lazy(() => import('./pages/profile'));
-const Dashboard = lazy(() => import('./pages/dashboard'));
+} from "react-router-dom";
+import * as ROUTES from "./contants/routes";
+import { ModalProvider, UserContext } from "./context";
+import { useAuthListener } from "./hooks";
+const Login = lazy(() => import("./pages/login"));
+const Signup = lazy(() => import("./pages/signup"));
+const NotFound = lazy(() => import("./pages/not-found"));
+const Profile = lazy(() => import("./pages/profile"));
+const Dashboard = lazy(() => import("./pages/dashboard"));
 
 function RequireAuth({ user }) {
   let location = useLocation();
@@ -78,7 +78,7 @@ export default function App() {
               }
             />
             <Route
-              path={'*'}
+              path={"*"}
               element={
                 <React.Suspense fallback={<p>Loading...</p>}>
                   <NotFound />

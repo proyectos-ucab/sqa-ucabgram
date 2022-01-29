@@ -148,15 +148,15 @@ Cloudinary upload preset name: duoiifbj
 
 ## Sprint 2
 
-- [ ] Historia de Usuario 12: Modificar perfil 15
-- [ ] Historia de Usuario 13: Eliminar perfil 16
-- [ ] Historia de Usuario 14: Consultar publicaciones 17
-- [ ] Historia de Usuario 15: Eliminar comentarios 17
-- [ ] Historia de Usuario 16: Eliminar publicaciones 18
-- [ ] Historia de Usuario 17: Desactivar usuario 19
-- [ ] Historia de Usuario 18: Activar usuario 20
-- [ ] Historia de Usuario 19: Subir vídeo 21
-- [ ] Historia de Usuario 20: Consultar vídeo 22
-- [ ] Historia de Usuario 21: Descargar vídeo 23
-- [ ] Historia de Usuario 22: Publicación tendencia usuario 24
-- [ ] Historia de Usuario 23: Publicación tendencia global
+- [x] Historia de Usuario 12: Modificar perfil 15 - usuario
+- [x] Historia de Usuario 13: Eliminar perfil 16 - usuario
+- [x] Historia de Usuario 14: Consultar publicaciones 17
+- [x] Historia de Usuario 15: Eliminar comentarios 17
+- [x] Historia de Usuario 16: Eliminar publicaciones 18 -
+- [ ] Historia de Usuario 17: Desactivar usuario 19 - administrador
+- [ ] Historia de Usuario 18: Activar usuario 20 - administrador
+- [x] Historia de Usuario 19: Subir vídeo 21 -
+- [x] Historia de Usuario 20: Consultar vídeo 22 -
+- [x] Historia de Usuario 21: Descargar vídeo 23 -
+- [x] Historia de Usuario 22: Publicación tendencia usuario 24 -
+- [x] Historia de Usuario 23: Publicación tendencia global 25 -
