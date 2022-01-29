@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useEffect } from "react/cjs/react.development";
 import { LoggedInUserContext } from "../context";
@@ -17,34 +17,32 @@ export function Timeline() {
   const { photos } = usePhotos(user);
 
   useEffect(() => {
-    // async function fetchTimeline() {
-    //   if (selectedTab === "todos") {
-    //     setDisplayedPhotos(photos);
-    //   } else if (selectedTab === "tendencia") {
-    //     const auxPhotosArray = new Array(...photos);
+    async function fetchTimeline() {
+      if (selectedTab === "todos") {
+        setDisplayedPhotos(photos);
+      } else if (selectedTab === "tendencia") {
+        const auxPhotosArray = new Array(...photos);
 
-    //     const sortedTendencyPhotos = new Array(
-    //       ...auxPhotosArray.sort((a, b) => {
-    //         return b.likes.length - a.likes.length;
-    //       })
-    //     );
+        const sortedTendencyPhotos = new Array(
+          ...auxPhotosArray.sort((a, b) => {
+            return b.likes.length - a.likes.length;
+          })
+        );
 
-    //     setDisplayedPhotos(sortedTendencyPhotos);
-    //   } else if (selectedTab === "global") {
-    //     const allPhotos = await getAllPosts(user.userId);
-    //     const sortedGlobalPhotos = new Array(
-    //       ...allPhotos.sort((a, b) => {
-    //         return b.likes.length - a.likes.length;
-    //       })
-    //     );
-    //     setDisplayedPhotos(sortedGlobalPhotos);
-    //   }
-    // }
-    // if (photos != null) {
-    //   fetchTimeline();
-    // }
-
-    setDisplayedPhotos(photos);
+        setDisplayedPhotos(sortedTendencyPhotos);
+      } else if (selectedTab === "global") {
+        const allPhotos = await getAllPosts(user.userId);
+        const sortedGlobalPhotos = new Array(
+          ...allPhotos.sort((a, b) => {
+            return b.likes.length - a.likes.length;
+          })
+        );
+        setDisplayedPhotos(sortedGlobalPhotos);
+      }
+    }
+    if (photos != null) {
+      fetchTimeline();
+    }
   }, [selectedTab, photos]);
 
   return (
