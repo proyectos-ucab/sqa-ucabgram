@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
-import { useEffect } from "react/cjs/react.development";
 import { LoggedInUserContext } from "../context";
 import { usePhotos } from "../hooks";
 import { getAllPosts } from "../services";
