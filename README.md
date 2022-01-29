@@ -153,8 +153,8 @@ Cloudinary upload preset name: duoiifbj
 - [x] Historia de Usuario 14: Consultar publicaciones 17
 - [x] Historia de Usuario 15: Eliminar comentarios 17
 - [x] Historia de Usuario 16: Eliminar publicaciones 18 -
-- [ ] Historia de Usuario 17: Desactivar usuario 19 - administrador
-- [ ] Historia de Usuario 18: Activar usuario 20 - administrador
+- [x] Historia de Usuario 17: Desactivar usuario 19 - administrador
+- [x] Historia de Usuario 18: Activar usuario 20 - administrador
 - [x] Historia de Usuario 19: Subir vídeo 21 -
 - [x] Historia de Usuario 20: Consultar vídeo 22 -
 - [x] Historia de Usuario 21: Descargar vídeo 23 -
